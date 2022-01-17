@@ -1,3 +1,5 @@
+ROBOT_COUNT = 0
+
 class Robot():
     __name = "<unnamed>"
     __power = False
@@ -5,27 +7,34 @@ class Robot():
     __battery_level = 0
     __states = ['shutown', 'running']
     
-  def __init__(self, name=None):
-    if name:
-      self.name = name
-    global ROBOT_COUNT
-    ROBOT_COUNT += 1
+    def __init__(self, name=None):
+      if name:
+        self.name = name
+      global ROBOT_COUNT
+      ROBOT_COUNT += 1
 
-  def __del__(self):
-    print("%s Auto destruction NOW"%(self.name))
-    global ROBOT_COUNT
-    ROBOT_COUNT -= 1
+    def __del__(self):
+      print("%s Auto destruction NOW"%(self.name))
+      global ROBOT_COUNT
+      ROBOT_COUNT -= 1
 
-  def run(self):
-    self.power = True
+    def name(self):
+      return self.__name
 
-  def stop(self):
-    self.power = False
+    def run(self):
+      self.power = True
 
-  def charge(self):
-    self.current_speed = 
+    def stop(self):
+      self.power = False
 
-        
-    """
-      Give your best code here ( •̀ ω •́ )✧
-    """
+    def charge(self, __battery_level=0):
+      for i in range(100):
+        print(__battery_level)
+        __battery_level =+ 1
+      print("Robot chargé")
+       
+
+r = Robot()
+r.name = "bob"
+print(r.name)
+r.charge
