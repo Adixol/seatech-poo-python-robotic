@@ -4,7 +4,7 @@ class Robot():
     __name = "<unnamed>"
     __power = False
     __current_speed = 0
-    __battery_level = 0
+    __battery_level = 80
     __states = ['shutown', 'running']
     
     def __init__(self, name=None):
@@ -27,14 +27,17 @@ class Robot():
     def stop(self):
       self.power = False
 
-    def charge(self, __battery_level=0):
-      for i in range(100):
-        print(__battery_level)
-        __battery_level =+ 1
-      print("Robot chargé")
+    def charge(self, battery_level=0):
+      if battery_level < 100:
+        self.__battery_level =+ 1
+        print(battery_level)
+      if battery_level == 100:
+        print("Robot chargé")
+    
+
        
 
 r = Robot()
 r.name = "bob"
 print(r.name)
-r.charge
+r.charge()
