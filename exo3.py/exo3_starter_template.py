@@ -1,25 +1,37 @@
 from abc import ABCMeta, abstractmethod, ABC
 
-""" You can use classes below or create your own 👍️"""
-
 class UnmannedVehicle():
-    """ 
-        An autonomous vehicle have to do his mission automatically.
-        This mission can be configured by an operator.
-    """
-    pass
 
-class AerialVehicle():
-    """ A vehicle made for ground fields."""
-    pass
+    def __init__(self, name=None):
+      if name:
+        self.name = name
 
-class GroundVehicle():
+    def __del__(self):
+      print("%s Auto destruction NOW"%(self.name))
+
+    def name(self):
+      return self.__name
+
+    def do_something_interesting(self):
+        print("%s do smtg interesting"%(self.name))
+
+class AerialVehicle(ABC):
     """ A vehicle made for ground fields."""
-    pass
+
+    @abstractmethod
+    def decolage(self):
+        pass
+
+class GroundVehicle(ABC):
+    """ A vehicle made for ground fields."""
+
+    @abstractmethod
+    def roule(self):
+        pass
 
 class AerialAndGroundVehicle(AerialVehicle, GroundVehicle):
     print("Aerial and ground vehicle")
-    pass
+    
     
 
 class UnderseaVehicle(ABC):
@@ -28,19 +40,23 @@ class UnderseaVehicle(ABC):
     def mise_a_l_eau(self):
         pass
 
-class UAV():
+class UAV(AerialVehicle):
     """Unmanned Aerial Vehicle"""
-    pass
+    def decolage(self):
+        print("DECOLAGE")
 
 class UUV(UnderseaVehicle):
     """Unmanned Undersea Vehicle"""
     def mise_a_l_eau(self):
         print("MISE A L'EAU")
     
+    def do_something_interesting(self):
+        print("UUV do smtg interesting")
 
-class UGV():
+class UGV(GroundVehicle):
     """Unmanned Ground Vehicle"""
-    pass
+    def roule(self):
+        print("ROULE")
 
 
 # uav = UAV()
